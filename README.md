@@ -5,7 +5,7 @@ The base of flask project
 1. [安装Flask](https://www.bilibili.com/video/BV1FE411j77r/)
 1. [最小Flask APP](https://www.bilibili.com/video/BV1T7411o7Gi/)
 1. [创建目录结构](https://www.bilibili.com/video/BV1tE411w725/)
-1. 配置文件最佳实践
+1. 配置最佳实践
 1. 记录日志
 1. URL地址
 1. POST和GET
