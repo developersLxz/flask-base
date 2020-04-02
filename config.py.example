@@ -5,6 +5,9 @@ class Config():
     DEBUG = False
     TESTING = False
 
+    def __init__(self, app):
+        self.app = app
+
 class ProductionConfig(Config):
     pass
 
