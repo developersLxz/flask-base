@@ -19,21 +19,39 @@ def create_app():
         from config import ProductionConfig, DevelopmentConfig, TestingConfig
 
         if app.config['ENV'] == 'production':
-            app.config.from_object(ProductionConfig())
+            app.config.from_object(ProductionConfig(app))
         elif app.config['ENV'] == 'development':
-            app.config.from_object(DevelopmentConfig())
+            app.config.from_object(DevelopmentConfig(app))
         elif app.config['ENV'] == 'testing':
-            app.config.from_object(TestingConfig())
+            app.config.from_object(TestingConfig(app))
         else:
-            raise Exception('FLASK_ENV only in (production, development, testing). Your FLASK_ENV is: %s' % (app.config['ENV']))
+            raise Exception(
+                'FLASK_ENV only in (production, development, testing). Your FLASK_ENV is: %s'
+                % (app.config['ENV']))
 
     else:
         raise Exception(
             'Copy config.py.example to %s AND rename to config.py' %
             (app.instance_path))
 
+    # logging
+    import logging
+    formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    from logging.handlers import TimedRotatingFileHandler
+    handler = TimedRotatingFileHandler(**app.config['LOG_PARAMETERS'])
+    handler.setLevel(app.logger.level)
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
+
     @app.route('/')
     def hello_world():
-        return str(DevelopmentConfig().DEBUG)
+        app.logger.critical('critical')
+        app.logger.error('error')
+        app.logger.warning('warning')
+        app.logger.info('info')
+        app.logger.debug('debug')
+
+        return str(app.logger.level)
 
     return app

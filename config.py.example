@@ -1,18 +1,50 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import os
+
+
 class Config():
     DEBUG = False
     TESTING = False
 
+    # logging
+    LOG_FILENAME = None
+    LOG_BACKUP_COUNT = 30  # 30 days
+
+    @property
+    def LOG_PARAMETERS(self):
+        return {
+            'filename': os.path.join(self.app.instance_path,
+                         (self.LOG_FILENAME or self.app.name + '.log')),
+            'backupCount': self.LOG_BACKUP_COUNT,
+            'when': 'midnight'
+        }
+
     def __init__(self, app):
         self.app = app
 
+
 class ProductionConfig(Config):
-    pass
+    # logging
+    @property
+    def LOG_FILENAME(self):
+        return self.app.name + '-production.log'
+
 
 class DevelopmentConfig(Config):
     DEBUG = True
 
+    # logging
+    @property
+    def LOG_FILENAME(self):
+        return self.app.name + '-development.log'
+
+
 class TestingConfig(Config):
     TESTING = True
+
+    # logging
+    @property
+    def LOG_FILENAME(self):
+        return self.app.name + '-testing.log'
