@@ -45,13 +45,27 @@ def create_app():
     app.logger.addHandler(handler)
 
     @app.route('/')
-    def hello_world():
-        app.logger.critical('critical')
-        app.logger.error('error')
-        app.logger.warning('warning')
-        app.logger.info('info')
-        app.logger.debug('debug')
+    def index():
+        app.logger.info("Index Page")
+        return "Index"
 
-        return str(app.logger.level)
+    @app.route('/hello/<name>', defaults={'gender': None})
+    @app.route('/hello/<name>/<gender>')
+    def hello(name, gender):
+        ret = 'Hello! '
+
+        if gender == 'male':
+            ret += 'Mr '
+        elif gender == 'female':
+            ret += 'Miss '
+        else:
+            pass
+
+        return ret + name
+
+    @app.route('/calculate/<string:expression>')
+    def calculate(expression):
+        app.logger.debug(type(expression))
+        return str(eval(expression))
 
     return app
