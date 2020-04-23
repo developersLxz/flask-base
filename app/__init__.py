@@ -49,23 +49,8 @@ def create_app():
         app.logger.info("Index Page")
         return "Index"
 
-    @app.route('/hello/<name>', defaults={'gender': None})
-    @app.route('/hello/<name>/<gender>')
-    def hello(name, gender):
-        ret = 'Hello! '
-
-        if gender == 'male':
-            ret += 'Mr '
-        elif gender == 'female':
-            ret += 'Miss '
-        else:
-            pass
-
-        return ret + name
-
-    @app.route('/calculate/<string:expression>')
-    def calculate(expression):
-        app.logger.debug(type(expression))
-        return str(eval(expression))
+    from .blueprints import maintain
+    app.register_blueprint(maintain.bp, url_prefix='/maintain')
+    app.logger.info("Load maintain blueprint")
 
     return app
