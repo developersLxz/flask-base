@@ -7,8 +7,7 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__,
-                instance_path=os.path.join(os.path.abspath(os.curdir),
-                                           'instance'),
+                instance_path=os.path.join(os.path.abspath(os.curdir), 'instance'),
                 instance_relative_config=True)
 
     # configuration
@@ -36,8 +35,7 @@ def create_app():
 
     # logging
     import logging
-    formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     from logging.handlers import TimedRotatingFileHandler
     handler = TimedRotatingFileHandler(**app.config['LOG_PARAMETERS'])
     handler.setLevel(app.logger.level)
