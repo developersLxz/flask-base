@@ -9,7 +9,7 @@ The base of flask project
 1. [记录日志](https://www.bilibili.com/video/BV1Qp4y1C7K1/) [(code)](https://github.com/richard-ma/flask-base/tree/05%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97)
 1. [URL地址](https://www.bilibili.com/video/BV1jg4y1z7h9/) [(code)](https://github.com/richard-ma/flask-base/tree/06URL%E5%9C%B0%E5%9D%80)
 1. [使用blueprint](https://www.bilibili.com/video/BV1j64y1M7sd) [(code)](https://github.com/richard-ma/flask-base/tree/07%E4%BD%BF%E7%94%A8blueprint)
-1. 使用模板
+1. 使用模板 [(code)](https://github.com/richard-ma/flask-base/tree/08%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF)
 1. 模板的继承
 1. 模板中的变量
 1. 模板filter
