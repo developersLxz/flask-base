@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 import os, sys
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app():
@@ -45,7 +45,7 @@ def create_app():
     @app.route('/')
     def index():
         app.logger.info("Index Page")
-        return "Index"
+        return render_template('index.html')
 
     from .blueprints import maintain
     app.register_blueprint(maintain.bp, url_prefix='/maintain')

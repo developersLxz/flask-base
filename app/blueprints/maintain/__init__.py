@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template, request
 
 bp = Blueprint('maintain', __name__,
         template_folder='templates',
@@ -7,3 +7,7 @@ bp = Blueprint('maintain', __name__,
 @bp.route('/ping')
 def ping():
     return 'pong'
+
+@bp.route('/')
+def index():
+    return render_template('index.html', domain=request.url)
