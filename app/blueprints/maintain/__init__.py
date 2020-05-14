@@ -10,4 +10,4 @@ def ping():
 
 @bp.route('/')
 def index():
-    return render_template('index.html', domain=request.url)
+    return render_template('maintain_index.html', domain=request.url)
