@@ -5,6 +5,7 @@ import os
 
 
 class Config():
+    APP_NAME = 'App'
     DEBUG = False
     TESTING = False
 
