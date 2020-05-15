@@ -5,9 +5,9 @@ bp = Blueprint('maintain', __name__,
         static_folder='static')
 
 @bp.route('/ping')
-def ping():
+def maintain_ping():
     return 'pong'
 
 @bp.route('/')
-def index():
+def maintain_index():
     return render_template('maintain_index.html', domain=request.url)
