@@ -43,9 +43,9 @@ def create_app():
     app.logger.addHandler(handler)
 
     @app.route('/')
-    def index():
-        app.logger.info("Index Page")
-        return render_template('index.html')
+    def dashboard():
+        app.logger.info("Dashboard")
+        return render_template('dashboard.html')
 
     from .blueprints import maintain
     app.register_blueprint(maintain.bp, url_prefix='/maintain')
