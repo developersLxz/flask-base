@@ -11,3 +11,7 @@ def maintain_ping():
 @bp.route('/')
 def maintain_index():
     return render_template('maintain_index.html', domain=request.url)
+
+@bp.route('/test')
+def test():
+    return render_template('test.html')
