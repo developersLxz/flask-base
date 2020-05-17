@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Test
+{% endblock %}
+
+{% block content %}
+<ul>
+    <li>String: {{ string_var }}</li>
+    <li>Integer: {{ integer_var }}</li>
+    <li>Float: {{ float_var }}</li>
+</ul>
+
+<h3>List</h3>
+<ul>
+    {% for item in list_var %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Dict</h3>
+<ul>
+    {% for key, value in dict_var.items() %}
+    <li>{{ key }}: {{ value }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
