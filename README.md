@@ -10,7 +10,7 @@ The base of flask project
 1. [URL地址](https://www.bilibili.com/video/BV1jg4y1z7h9/) [(code)](https://github.com/richard-ma/flask-base/tree/06URL%E5%9C%B0%E5%9D%80)
 1. [使用blueprint](https://www.bilibili.com/video/BV1j64y1M7sd) [(code)](https://github.com/richard-ma/flask-base/tree/07%E4%BD%BF%E7%94%A8blueprint)
 1. [使用模板](https://www.bilibili.com/video/BV11z411q7fk) [(code)](https://github.com/richard-ma/flask-base/tree/08%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF)
-1. 模板的继承
+1. 模板的继承 [(code)](https://github.com/richard-ma/flask-base/tree/09%E6%A8%A1%E6%9D%BF%E7%9A%84%E7%BB%A7%E6%89%BF)
 1. 模板中的变量
 1. 模板filter
 1. 自定义filter
