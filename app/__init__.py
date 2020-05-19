@@ -48,14 +48,14 @@ def create_app():
         return render_template('dashboard.html')
 
     @app.route('/test')
-    def test()：
+    def test():
         data = dict()
         data['string_var'] = 'my string'
         data['integer_var'] = 100
         data['float_var'] = 3.1415926
         data['list_var'] = ['list1', 33, 2.76]
         data['dict_var'] = {'key': 'value', 'foo': 'bar', 'test': 'dict'}
-        return render_template('test.html')
+        return render_template('test.html', **data)
 
     from .blueprints import maintain
     app.register_blueprint(maintain.bp, url_prefix='/maintain')
