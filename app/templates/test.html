@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% macro input(name, placeholder="") %}
+<input type="text" name="{{ name }}" placeholder="{{ placeholder }}" />
+{% endmacro %}
+
 {% block title %}
 Test
 {% endblock %}
@@ -24,4 +28,7 @@ Test
     <li>{{ key }}: {{ value }}</li>
     {% endfor %}
 </ul>
+<h3>Macro</h3>
+{{ input("input1") }} </br>
+{{ input("input2", placeholder="input2") }} </br>
 {% endblock %}
