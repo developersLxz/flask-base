@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
-{% macro input(name, placeholder="") %}
-<input type="text" name="{{ name }}" placeholder="{{ placeholder }}" />
+{% macro title(name, init_data) %}
+<div>{{ name | capitalize }}: {{ init_data | pprint }}</div> -->
+{% endmacro %}
+
+{% macro line(length=20) %}
+<div>
+    {% for i in range(length) %}
+        -
+    {% endfor %}
+</div>
 {% endmacro %}
 
 {% block title %}
@@ -9,26 +17,198 @@ Test
 {% endblock %}
 
 {% block content %}
-<ul>
-    <li>String: {{ string_var }}</li>
-    <li>Integer: {{ integer_var }}</li>
-    <li>Float: {{ float_var }}</li>
-</ul>
+<h1>String</h1>
+{% set data = '35.4' %}
+{{ title('string', data) }}
+{{ data | string }}
+{{ line() }}
 
-<h3>List</h3>
-<ul>
-    {% for item in list_var %}
-    <li>{{ item }}</li>
-    {% endfor %}
-</ul>
+{% set data = 'capitalize' %}
+{{ title('capitalize', data) }}
+{{ data | capitalize }}
+{{ line() }}
 
-<h3>Dict</h3>
+{% set data = 'hello world' %}
+{{ title('title', data) }}
+{{ data | title }}
+{{ line() }}
+
+{% set data = 'UPPER' %}
+{{ title('lower', data) }}
+{{ data | lower }}
+{{ line() }}
+
+{% set data = 'lower' %}
+{{ title('upper', data) }}
+{{ data | upper }}
+{{ line() }}
+
+{% set data = 'hello, world' %}
+{{ title('replace', data) }}
+{{ data | replace('hello', 'hi') }}
+{{ line() }}
+
+{% set data = ' hello, world ' %}
+{{ title('trim', data) }}
+{{ data | trim | pprint }}
+{{ line() }}
+
+{% set data = ' hello, world ' %}
+{{ title('truncate', data) }}
+{{ data | truncate(8, True) }}
+{{ line() }}
+
+{% set data = ' hello world ' %}
+{{ title('wordcount', data) }}
+{{ data | wordcount }}
+{{ line() }}
+
+{% set data = ' hello world ' %}
+{{ title('wordwrap', data) }}
+{{ data | wordwrap(3, True) }}
+{{ line() }}
+
+{% set data = 'hello\world' %}
+{{ title('urlencode', data) }}
+{{ data | urlencode }}
+{{ line() }}
+
+{% set data = '<hello\world>' %}
+{{ title('escape', data) }}
+{{ data | escape }}
+{{ line() }}
+
+{% set data = '<hello\world>' %}
+{{ title('forceescape', data) }}
+{{ data | forceescape }}
+{{ line() }}
+
+{% set data = 'hello\world' %}
+{{ title('safe', data) }}
+{{ data | safe }}
+{{ line() }}
+
+{% set data = 'hello world' %}
+{{ title('urlize', data) }}
+{{ data | urlize(40, target='_blank') }}
+{{ line() }}
+
+{% set data = 'hello world' %}
+{{ title('indent', data) }}
+{{ data | indent }}
+{{ line() }}
+
+<h1>Number</h1>
+{% set data = '24.8' %}
+{{ title('int', data) }}
+{{ data | int }}
+{{ line() }}
+
+{% set data = 24 %}
+{{ title('float', data) }}
+{{ data | float }}
+{{ line() }}
+
+{% set data = -33.4 %}
+{{ title('abs', data) }}
+{{ data | abs }}
+{{ line() }}
+
+{% set data = -33.4 %}
+{{ title('round', data) }}
+{{ data | round}}
+{{ line() }}
+
+<h1>List</h1>
+{% set data = [1, 2, 3] %}
+{{ title('list', data) }}
+{{ data | list }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('slice', data) }}
+{{ data | slice(2) }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('first', data) }}
+{{ data | first }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('last', data) }}
+{{ data | last }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('length', data) }}
+{{ data | length }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('max', data) }}
+{{ data | max }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('min', data) }}
+{{ data | min }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('reverse', data) }}
+{{ data | reverse | list }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('sum', data) }}
+{{ data | sum }}
+{{ line() }}
+
+{% set data = [1, 2, 3] %}
+{{ title('join', data) }}
+{{ data | join('| ') }}
+{{ line() }}
+
+{% set data = [1, 2, 3, 3, 4, 6] %}
+{{ title('unique', data) }}
+{{ data | unique | list }}
+{{ line() }}
+
+{% set data = [1, 8, 3, 9, 2] %}
+{{ title('sort', data) }}
+{{ data | sort | list }}
+{{ line() }}
+
+{% set data = [1, 8, 3, 9, 2] %}
+{{ title('random', data) }}
+{{ data | random }}
+{{ line() }}
+
+<h1>Other</h1>
+{% set data = {'foo': 1, 'bar': 2, 'too': 3} %}
+{{ title('tojson', data) }}
+{{ data | tojson }}
+{{ line() }}
+
+{% set data = 'foo bar' %}
+{{ title('center', data) }}
+{{ data | center(3) | pprint }}
+{{ line() }}
+
+{% set data = '%s %s' %}
+{{ title('format', data) }}
+{{ data | format('foo', 'bar') }}
+{{ line() }}
+
+{{ title('default', 'undefine') }}
+{{ undefine_data | default('default value') }}
+{{ line() }}
+
+{{ title('xmlattr', None) }}
 <ul>
-    {% for key, value in dict_var.items() %}
-    <li>{{ key }}: {{ value }}</li>
-    {% endfor %}
+    <li{{ {'class': 'my_class', 'id': 'my_id'} | xmlattr }}>hello world</li>
 </ul>
-<h3>Macro</h3>
-{{ input("input1") }} </br>
-{{ input("input2", placeholder="input2") }} </br>
+{{ line() }}
+
 {% endblock %}
