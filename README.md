@@ -14,6 +14,7 @@ The base of flask project
 1. 模板中的变量 [(code)](https://github.com/richard-ma/flask-base/tree/10%E6%A8%A1%E6%9D%BF%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F)
 1. 模板filter [(code)](https://github.com/richard-ma/flask-base/tree/11%E6%A8%A1%E6%9D%BFfilter)
 1. 自定义filter
+1. 模板tester
 1. POST和GET
 1. 测试页面
 1. Manager管理APP
